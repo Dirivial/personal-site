@@ -29,7 +29,7 @@ const Home: NextPage = () => {
             <div className="p-2" />
             <a href="https://github.com/Dirivial" className="">
               <Image
-                className="p-4 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-500"
+                className="p-4 rounded-full"
                 width="300"
                 height="300"
                 src="https://raw.githubusercontent.com/Dirivial/A-maze-d/main/public/pfp.png"
