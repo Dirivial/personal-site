@@ -45,9 +45,10 @@ export default function Projects() {
       </h1>
       <div />
       <div className="flex flex-col gap-y-8">
-        {AllProjects.map((card) => {
+        {AllProjects.map((card, index) => {
           return (
             <ProjectCard
+              key={index}
               image={card.image}
               header={card.header}
               link={card.link}
@@ -74,6 +75,7 @@ function ProjectCard({ image, header, link, description }: ProjectCardProps) {
         <Image
           title={description}
           src={image}
+          alt={"Image showing " + header}
           layout="fixed"
           width={400}
           height={225}
