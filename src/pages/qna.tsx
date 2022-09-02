@@ -46,7 +46,7 @@ export default function Qna() {
         <h1>Have you gotten any questions?</h1>
         <p>No.</p>
 
-        <h1>What's the point of this page?</h1>
+        <h1>What is the point of this page?</h1>
         <p>To add a page.</p>
 
         <h1>What did you use to create this site?</h1>
@@ -56,7 +56,7 @@ export default function Qna() {
             className="text-indigo-400"
             href="https://nextjs.org/"
             target="_blank"
-            rel="norefferer"
+            rel="noreferrer"
           >
             NextJS
           </a>{" "}
@@ -65,7 +65,7 @@ export default function Qna() {
             className="text-indigo-400"
             href="https://tailwindcss.com/"
             target="_blank"
-            rel="norefferer"
+            rel="noreferrer"
           >
             Tailwind CSS
           </a>
@@ -74,7 +74,7 @@ export default function Qna() {
             className="text-indigo-400"
             href="https://create.t3.gg/"
             target="_blank"
-            rel="norefferer"
+            rel="noreferrer"
           >
             Create-T3-App
           </a>
