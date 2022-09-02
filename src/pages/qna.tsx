@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Qna() {
   return (
@@ -12,7 +13,7 @@ export default function Qna() {
         </Link>
         <Link href="/projects">
           <a className="p-2 text-2xl font-bold rounded text-gray-200 bg-slate-800 hover:text-indigo-400 transition-colors relative">
-            Project
+            Projects
           </a>
         </Link>
         <Link href="/qna">
@@ -21,16 +22,65 @@ export default function Qna() {
           </a>
         </Link>
       </div>
-      <div className="container mx-auto"></div>
-    </>
-  );
-}
+      <Head>
+        <title>Dirivial x QnA</title>
+        <meta
+          name="description"
+          content="Personal portfolio website for me, Dirivial"
+        />
+        <link
+          rel="icon"
+          href="https://raw.githubusercontent.com/Dirivial/A-maze-d/main/public/pfp.png"
+        />
+      </Head>
+      <div className="p-2" />
+      <h1 className="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-br from-indigo-500 to-red-600">
+        Q&A
+      </h1>
+      <div className="container mx-auto flex flex-col items-center qna">
+        <div className="p-3" />
 
-function Entry(Question: string, Answer: string) {
-  return (
-    <div>
-      <h1>{Question}</h1>
-      <p>{Answer}</p>
-    </div>
+        <h1>Yo?</h1>
+        <p>Yo.</p>
+
+        <h1>Have you gotten any questions?</h1>
+        <p>No.</p>
+
+        <h1>What's the point of this page?</h1>
+        <p>To add a page.</p>
+
+        <h1>What did you use to create this site?</h1>
+        <p>
+          I used{" "}
+          <a
+            className="text-indigo-400"
+            href="https://nextjs.org/"
+            target="_blank"
+            rel="norefferer"
+          >
+            NextJS
+          </a>{" "}
+          and{" "}
+          <a
+            className="text-indigo-400"
+            href="https://tailwindcss.com/"
+            target="_blank"
+            rel="norefferer"
+          >
+            Tailwind CSS
+          </a>
+          . To ease the setup, I used the wonderful{" "}
+          <a
+            className="text-indigo-400"
+            href="https://create.t3.gg/"
+            target="_blank"
+            rel="norefferer"
+          >
+            Create-T3-App
+          </a>
+          .
+        </p>
+      </div>
+    </>
   );
 }

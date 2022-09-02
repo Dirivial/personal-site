@@ -37,7 +37,7 @@ export default function Projects() {
         </Link>
         <Link href="/projects">
           <a className="p-2 text-2xl font-bold rounded text-gray-200 bg-slate-800 hover:text-indigo-400 transition-colors relative">
-            Project
+            Projects
           </a>
         </Link>
         <Link href="/qna">
