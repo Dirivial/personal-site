@@ -2,6 +2,7 @@ import Image, { StaticImageData } from "next/image";
 import Head from "next/head";
 import amazedImage from "../../public/amazed.png";
 import kanbanImage from "../../public/issueTracker.png";
+import Link from "next/link";
 
 type ProjectCardProps = {
   image: StaticImageData;
@@ -27,37 +28,57 @@ const AllProjects = [
 
 export default function Projects() {
   return (
-    <div className="container mx-auto flex flex-col gap-y-4 items-center ">
-      <Head>
-        <title>Dirivial x Projects</title>
-        <meta
-          name="description"
-          content="Personal portfolio website for me, Dirivial"
-        />
-        <link
-          rel="icon"
-          href="https://raw.githubusercontent.com/Dirivial/A-maze-d/main/public/pfp.png"
-        />
-      </Head>
-      <div className="p-4" />
-      <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-indigo-500 to-red-600">
-        Projects
-      </h1>
-      <div />
-      <div className="flex flex-col gap-y-8">
-        {AllProjects.map((card, index) => {
-          return (
-            <ProjectCard
-              key={index}
-              image={card.image}
-              header={card.header}
-              link={card.link}
-              description={card.description}
-            />
-          );
-        })}
+    <>
+      <div className="flex justify-start">
+        <Link href="/">
+          <a className="p-2 text-2xl font-bold rounded text-gray-200 bg-slate-800 hover:text-indigo-400 transition-colors relative">
+            Home
+          </a>
+        </Link>
+        <Link href="/projects">
+          <a className="p-2 text-2xl font-bold rounded text-gray-200 bg-slate-800 hover:text-indigo-400 transition-colors relative">
+            Project
+          </a>
+        </Link>
+        <Link href="/qna">
+          <a className=" p-2 text-2xl font-bold rounded text-gray-200 hover:text-indigo-500 bg-slate-800 transition-colors">
+            Q&A
+          </a>
+        </Link>
       </div>
-    </div>
+      <div className="container mx-auto flex flex-col gap-y-4 items-center ">
+        <Head>
+          <title>Dirivial x Projects</title>
+          <meta
+            name="description"
+            content="Personal portfolio website for me, Dirivial"
+          />
+          <link
+            rel="icon"
+            href="https://raw.githubusercontent.com/Dirivial/A-maze-d/main/public/pfp.png"
+          />
+        </Head>
+
+        <div className="p-4" />
+        <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-indigo-500 to-red-600">
+          Projects
+        </h1>
+        <div />
+        <div className="flex flex-col gap-y-8">
+          {AllProjects.map((card, index) => {
+            return (
+              <ProjectCard
+                key={index}
+                image={card.image}
+                header={card.header}
+                link={card.link}
+                description={card.description}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </>
   );
 }
 

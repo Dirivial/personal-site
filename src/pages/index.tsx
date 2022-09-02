@@ -35,22 +35,6 @@ const Home: NextPage = () => {
                 src="https://raw.githubusercontent.com/Dirivial/A-maze-d/main/public/pfp.png"
               />
             </a>
-            <div className="flex justify-around">
-              <div className="pt-2 pr-1 pb-2 rounded bg-gradient-to-bl from-indigo-600 via-gray-800 to-gray-800 relative -left-10 bottom-0 w-fit">
-                <Link href="/projects">
-                  <a className="p-2 text-2xl font-bold rounded text-gray-200 bg-slate-800 hover:text-indigo-400 transition-colors relative">
-                    Projects
-                  </a>
-                </Link>
-              </div>
-              <div className="pt-2 pl-1 rounded bg-gradient-to-br from-indigo-600 via-gray-800 to-gray-800 relative w-fit">
-                <Link href="/qna">
-                  <a className="p-2 text-2xl font-bold rounded text-gray-200 hover:text-indigo-500 bg-slate-800 transition-colors">
-                    Q&A
-                  </a>
-                </Link>
-              </div>
-            </div>
           </div>
 
           <div className="p-4" />
@@ -60,6 +44,18 @@ const Home: NextPage = () => {
             year old CS student.
           </div>
         </main>
+        <div className="flex gap-x-4 justify-center">
+          <Link href="/projects">
+            <a className="p-2 text-2xl font-bold rounded text-gray-200 bg-slate-800 hover:text-indigo-400 transition-colors relative">
+              Project
+            </a>
+          </Link>
+          <Link href="/qna">
+            <a className=" p-2 text-2xl font-bold rounded text-gray-200 hover:text-indigo-500 bg-slate-800 transition-colors">
+              Q&A
+            </a>
+          </Link>
+        </div>
       </div>
     </>
   );
