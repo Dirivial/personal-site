@@ -1,5 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -24,28 +26,29 @@ const Home: NextPage = () => {
           </h1>
           <div className="p-2" />
           <div className="">
+            <div className="p-2" />
             <a href="https://github.com/Dirivial" className="">
-              <img
-                className="p-1 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-500"
+              <Image
+                className="p-4 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-500"
+                width="300"
+                height="300"
                 src="https://raw.githubusercontent.com/Dirivial/A-maze-d/main/public/pfp.png"
               />
             </a>
             <div className="flex justify-around">
               <div className="pt-2 pr-1 pb-2 rounded bg-gradient-to-bl from-indigo-600 via-gray-800 to-gray-800 relative -left-10 bottom-0 w-fit">
-                <a
-                  href="/projects"
-                  className="p-2 text-2xl font-bold rounded text-gray-200 bg-slate-800 hover:bg-slate-900 transition-colors relative"
-                >
-                  Projects
-                </a>
+                <Link href="/projects">
+                  <a className="p-2 text-2xl font-bold rounded text-gray-200 bg-slate-800 hover:text-indigo-400 transition-colors relative">
+                    Projects
+                  </a>
+                </Link>
               </div>
               <div className="pt-2 pl-1 rounded bg-gradient-to-br from-indigo-600 via-gray-800 to-gray-800 relative w-fit">
-                <a
-                  href="/qna"
-                  className="p-2 text-2xl font-bold rounded text-gray-200 bg-slate-800 hover:bg-slate-900 transition-colors"
-                >
-                  Q&A
-                </a>
+                <Link href="/qna">
+                  <a className="p-2 text-2xl font-bold rounded text-gray-200 hover:text-indigo-500 bg-slate-800 transition-colors">
+                    Q&A
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
