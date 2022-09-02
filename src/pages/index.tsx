@@ -13,10 +13,9 @@ const Home: NextPage = () => {
           content="Personal portfolio website for me, Dirivial"
         />
         <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Raleway"
+          rel="icon"
+          href="https://raw.githubusercontent.com/Dirivial/A-maze-d/main/public/pfp.png"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
         <main className="container mx-auto flex flex-col items-center p-4">
@@ -30,6 +29,7 @@ const Home: NextPage = () => {
             <a href="https://github.com/Dirivial" className="">
               <Image
                 className="p-4 rounded-full"
+                alt="Profile picture of cartoon ghost linking to Github page"
                 width="300"
                 height="300"
                 src="https://raw.githubusercontent.com/Dirivial/A-maze-d/main/public/pfp.png"
