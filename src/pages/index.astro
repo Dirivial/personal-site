@@ -14,12 +14,28 @@ import Card from "../components/Card.astro";
             <img class="text-center rounded-full border-2 pfp" src="/pfp.ico" />
             <div class="p-2"></div>
             <p class="text-bold text-lg">A CS student from Sweden</p>
+
+            <p class="pb-6 text-6xl cursor-default select-none">. . . . .</p>
+            <div class="centeredContent">
+              <img
+                class="github rounded-full border-2 hover:animate-pulse"
+                src="/github-logo.png"
+              />
+              <div class="p-2"></div>
+              <p class="text-bold text-lg">Take a look at my projects</p>
+            </div>
+
+            <p class="pb-6 text-6xl cursor-default select-none">. . . . .</p>
+
+            <div class="centeredContent">
+              <img class="w-16 hover:animate-pulse" src="/envelope.png" />
+              <div class="p-2"></div>
+              <p class="text-bold text-lg">Contact Me</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="p-24"></div>
   </main>
 </Layout>
 
@@ -42,6 +58,11 @@ import Card from "../components/Card.astro";
     font-weight: bold;
   }
 
+  .github {
+    background-color: #474554;
+    border-color: #bb000e;
+    box-shadow: 0px 0px 10px #bb000e;
+  }
   .pfp {
     border-color: #bb000e;
     box-shadow: 0px 0px 10px #bb000e;
