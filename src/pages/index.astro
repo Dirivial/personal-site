@@ -1,0 +1,127 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+---
+
+<Layout title="Dirivial | Home">
+  <main>
+    {/* The first thing to display */}
+    <div class="outerbox">
+      <div class="wrapper">
+        <div class="box">
+          <div class="wrapper centeredContent">
+            <h1 class="text-gradient p-2">Dirivial</h1>
+            <img class="text-center rounded-full border-2 pfp" src="/pfp.ico" />
+            <div class="p-2"></div>
+            <p class="text-bold text-lg"></p>
+            <p class="text-bold text-lg">A CS student from Sweden who likes:</p>
+            <div class="flex">
+              <p class="text-bold text-lg">
+                Programming, weightlifting, climbing and reading
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 w-full linksBox">
+      <a class="text-bold text-lg link" href="https://github.com/Dirivial"
+        >Github</a
+      >
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    margin-top: 10vh;
+  }
+  h1 {
+    font-family: "Dancing Script", serif;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p,
+  li,
+  .link {
+    color: #474554;
+    font-family: "Montserrat", serif;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .linksBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .pfp {
+    border-color: #bb000e;
+    box-shadow: 0px 0px 10px #bb000e;
+  }
+
+  .centeredContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .outerbox {
+    background-image: linear-gradient(
+      0deg,
+      #111111 0%,
+      rgba(227, 28, 37, 1) 5%,
+      #1c1c1c 10%,
+      #1c1c1c 90%,
+      #e31c25 95%,
+      #111111 100%
+    );
+    /*background-color: #e31c25;*/
+
+    padding: 1% 0px; /* Added a percentage value for top/bottom padding to keep the wrapper inside of the parent */
+
+    -webkit-transform: skewY(-5deg);
+    -moz-transform: skewY(-5deg);
+    -ms-transform: skewY(-5deg);
+    -o-transform: skewY(-5deg);
+    transform: skewY(-5deg);
+  }
+  .outerbox > .wrapper {
+    -webkit-transform: skewY(5deg);
+    -moz-transform: skewY(5deg);
+    -ms-transform: skewY(5deg);
+    -o-transform: skewY(5deg);
+    transform: skewY(5deg);
+  }
+  .box {
+    background-image: linear-gradient(
+      0deg,
+      rgba(227, 28, 37, 0.2) 0%,
+      #1c1c1c 2%,
+      #1c1c1c 98%,
+      rgba(227, 28, 37, 0.2) 100%
+    );
+    /*background-color: #1c1c1c;*/
+    padding: 5% 20px; /* Added a percentage value for top/bottom padding to keep the wrapper inside of the parent */
+
+    -webkit-transform: skewY(-5deg);
+    -moz-transform: skewY(-5deg);
+    -ms-transform: skewY(-5deg);
+    -o-transform: skewY(-5deg);
+    transform: skewY(-5deg);
+  }
+
+  .box > .wrapper {
+    -webkit-transform: skewY(5deg);
+    -moz-transform: skewY(5deg);
+    -ms-transform: skewY(5deg);
+    -o-transform: skewY(5deg);
+    transform: skewY(5deg);
+  }
+</style>
