@@ -7,33 +7,97 @@ import Card from "../components/Card.astro";
   <main>
     <div class="centeredContent">
       <div class="grid grid-cols-3">
-        <div class="pt-16 pb-8 flex flex-col justify-around translate-x-4">
-          <a class="text-right">Github</a>
-          <a class="text-right">Blog</a>
+        <div class="pt-8 pb-8 flex flex-row justify-evenly gap-12">
+          <a
+            class="transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105 text-right"
+            >Blog</a
+          >
+          <a
+            class="text-right transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105"
+            >FAQ</a
+          >
         </div>
-        <div class="flex flex-col items-center">
-          <h1 class="text-gradient p-2">Dirivial</h1>
-          <img
-            class="text-center rounded-full border-2 pfp w-40"
-            src="/pfp.ico"
-          />
-          <div class="p-2"></div>
-          <p class="text-bold text-lg">A CS student from Sweden</p>
+        <div class="m-auto">
+          <a href="/">
+            <img
+              class="text-center rounded-full border-2 pfp w-16 transition ease-linear delay-75 duration-300 hover:scale-95"
+              src="/pfp.ico"
+            />
+          </a>
         </div>
-        <div class="pt-16 pb-8 flex flex-col justify-around -translate-x-4">
-          <a class="">FAQ</a>
-          <a class="">Email</a>
+
+        <div class="pt-8 pb-8 flex flex-row justify-evenly gap-12">
+          <a
+            class="transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105"
+            href="https://github.com/Dirivial"
+            target="_self">Github</a
+          >
+          <a
+            class="transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105"
+            >Email</a
+          >
         </div>
       </div>
     </div>
-    <div class="p-4"></div>
+    <div class="pt-8 flex flex-row items-center">
+      <div class="h-2 w-2/4 bg-gray-600 rounded-r-lg"></div>
+      <h1 class="text-gradient p-2 -translate-y-1">Dirivial</h1>
+      <div class="h-2 w-full bg-gray-600 rounded-l-lg"></div>
+    </div>
+
+    <div class="pt-4 flex flex-col items-center">
+      <p class="w-2/5">
+        Hello, my name is Alexander. I'm a CS student who likes to do some web
+        development on his free time. My interests outside of programming
+        include weightlifting, rock climbing and reading.
+      </p>
+      <p class="w-2/5 pt-4">
+        I'm currently closing in on my bachelor's degree in Computer Science, so
+        I might be busier than usual. Recently I created the blog page which I
+        hope to update somewhat regularly with things I've learned or found
+        interesting.
+      </p>
+    </div>
+
+    <div class="pt-24 flex flex-row items-center">
+      <div class="h-2 w-full bg-gray-600 rounded-r-lg"></div>
+      <h1 class="text-gradient p-2 -translate-y-1">Projects</h1>
+      <div class="h-2 w-2/4 bg-gray-600 rounded-l-lg"></div>
+    </div>
+
+    <div class="pt-6 flex flex-col items-center">
+      <div class="grid grid-cols-2 gap-3 w-3/5">
+        <Card
+          title="dirivial.dev"
+          body="This website you're on right now!"
+          href="https://github.com/Dirivial/personal-site"
+        />
+        <Card
+          title="A-maze-d"
+          body="Small website for viewing a depth first search solving a maze"
+          href="https://github.com/Dirivial/a-maze-d"
+        />
+        <Card
+          title="Fit"
+          body="Website for remembering what you did last workout."
+          href="https://github.com/Dirivial/fit"
+        />
+        <Card
+          title="Issue Tracker"
+          body="Website tracking issues for a project. My first full-stack webdev project."
+          href="https://github.com/Dirivial/issue-tracker"
+        />
+      </div>
+    </div>
+
+    <div class="p-12"></div>
   </main>
 </Layout>
 
 <style>
   main {
     margin: auto;
-    margin-top: 10vh;
+    margin-top: 2vh;
   }
   h1 {
     font-size: 3rem;
@@ -43,9 +107,9 @@ import Card from "../components/Card.astro";
 
   p {
     color: var(--grey-7);
-    font-family: "Railway", serif;
+    font-family: "Quicksand", serif;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: thin;
   }
 
   .github {
@@ -60,12 +124,6 @@ import Card from "../components/Card.astro";
   .dark {
     background-color: var(--grey-0);
   }
-  a {
-    color: var(--grey-4);
-    font-size: 1rem;
-    font-weight: 100;
-    text-decoration: none;
-  }
 
   .centeredContent {
     display: flex;
@@ -74,6 +132,14 @@ import Card from "../components/Card.astro";
   }
   .text-gradient {
     background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+
+  .text-gradient-rev {
+    background-image: var(--teal-gradient-rev);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 400%;

@@ -20,6 +20,10 @@ const { title } = Astro.props;
     />
     <link
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Quicksand"
+    />
+    <link
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Dancing+Script"
     />
   </head>
@@ -52,7 +56,7 @@ const { title } = Astro.props;
 
     --accent: 187, 0, 14;
     --accent-gradient: linear-gradient(
-      45deg,
+      20deg,
       var(--teal-0),
       var(--teal-3) 30%,
       var(--teal-9) 60%
@@ -63,6 +67,12 @@ const { title } = Astro.props;
       var(--teal-3) 50%,
       var(--teal-5) 100%
     );
+    --teal-gradient-rev: linear-gradient(
+      225deg,
+      var(--teal-5),
+      var(--teal-3) 25%,
+      var(--teal-0) 80%
+    );
   }
   html {
     font-family: "Roboto", system-ui, sans-serif;
@@ -71,19 +81,5 @@ const { title } = Astro.props;
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
       DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-  }
-  @font-face {
-    font-family: "OleoScript";
-    src: url("/fonts/OleoScript-Regular.ttf") format("ttf");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "MarckScript";
-    src: url("/fonts/MarkScript-Regular.ttf") format("ttf");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
   }
 </style>
