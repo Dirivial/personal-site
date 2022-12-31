@@ -5,66 +5,123 @@ import Card from "../components/Card.astro";
 
 <Layout title="Dirivial | Home">
   <main>
-    {/* The first thing to display */}
-    <div class="outerbox">
-      <div class="wrapper">
-        <div class="box">
-          <div class="wrapper centeredContent">
-            <h1 class="text-gradient p-2">Dirivial</h1>
-            <img class="text-center rounded-full border-2 pfp" src="/pfp.ico" />
-            <div class="p-2"></div>
-            <p class="text-bold text-lg"></p>
-            <p class="text-bold text-lg">A CS student from Sweden who likes:</p>
-            <div class="flex">
-              <p class="text-bold text-lg">
-                Programming, weightlifting, climbing and reading
-              </p>
-            </div>
-          </div>
+    <div class="centeredContent">
+      <div class="grid grid-cols-3">
+        <div class="pt-8 pb-8 flex flex-row justify-evenly gap-12">
+          <a
+            class="transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105 text-right"
+            >Blog</a
+          >
+          <a
+            class="text-right transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105"
+            >FAQ</a
+          >
+        </div>
+        <div class="m-auto">
+          <a href="/">
+            <img
+              class="text-center rounded-full border-2 pfp w-16 transition ease-linear delay-75 duration-300 hover:scale-95"
+              src="/pfp.ico"
+            />
+          </a>
+        </div>
+
+        <div class="pt-8 pb-8 flex flex-row justify-evenly gap-12">
+          <a
+            class="transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105"
+            href="https://github.com/Dirivial"
+            target="_self">Github</a
+          >
+          <a
+            class="transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105"
+            >Email</a
+          >
         </div>
       </div>
     </div>
-
-    <div class="absolute bottom-0 w-full linksBox">
-      <a class="text-bold text-lg link" href="https://github.com/Dirivial"
-        >Github</a
-      >
+    <div class="pt-8 flex flex-row items-center">
+      <div class="h-2 w-2/4 bg-gray-600 rounded-r-lg"></div>
+      <h1 class="text-gradient p-2 -translate-y-1">Dirivial</h1>
+      <div class="h-2 w-full bg-gray-600 rounded-l-lg"></div>
     </div>
+
+    <div class="pt-4 flex flex-col items-center">
+      <p class="w-2/5">
+        Hello, my name is Alexander. I'm a CS student who likes to do some web
+        development on his free time. My interests outside of programming
+        include weightlifting, rock climbing and reading.
+      </p>
+      <p class="w-2/5 pt-4">
+        I'm currently closing in on my bachelor's degree in Computer Science, so
+        I might be busier than usual. Recently I created the blog page which I
+        hope to update somewhat regularly with things I've learned or found
+        interesting.
+      </p>
+    </div>
+
+    <div class="pt-24 flex flex-row items-center">
+      <div class="h-2 w-full bg-gray-600 rounded-r-lg"></div>
+      <h1 class="text-gradient p-2 -translate-y-1">Projects</h1>
+      <div class="h-2 w-2/4 bg-gray-600 rounded-l-lg"></div>
+    </div>
+
+    <div class="pt-6 flex flex-col items-center">
+      <div class="grid grid-cols-2 gap-3 w-3/5">
+        <Card
+          title="dirivial.dev"
+          body="This website you're on right now!"
+          href="https://github.com/Dirivial/personal-site"
+        />
+        <Card
+          title="A-maze-d"
+          body="Small website for viewing a depth first search solving a maze"
+          href="https://github.com/Dirivial/a-maze-d"
+        />
+        <Card
+          title="Fit"
+          body="Website for remembering what you did last workout."
+          href="https://github.com/Dirivial/fit"
+        />
+        <Card
+          title="Issue Tracker"
+          body="Website tracking issues for a project. My first full-stack webdev project."
+          href="https://github.com/Dirivial/issue-tracker"
+        />
+      </div>
+    </div>
+
+    <div class="p-12"></div>
   </main>
 </Layout>
 
 <style>
   main {
     margin: auto;
-    margin-top: 10vh;
+    margin-top: 2vh;
   }
   h1 {
-    font-family: "Dancing Script", serif;
     font-size: 3rem;
     font-weight: bold;
     margin: 0;
     color: #bb000e;
   }
 
-  p,
-  li,
-  .link {
-    color: #474554;
-    font-family: "Montserrat", serif;
+  p {
+    color: var(--grey-7);
+    font-family: "Quicksand", serif;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: thin;
   }
 
-  .linksBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 3rem;
+  .github {
+    background-color: var(--grey-0);
+    border-color: var(--grey-1);
+    box-shadow: 0px 0px 10px var(--grey-1);
   }
 
   .pfp {
-    border-color: #bb000e;
-    box-shadow: 0px 0px 10px #bb000e;
+    border-color: var(--grey-1);
+    box-shadow: 0px 0px 10px var(--grey-1);
   }
 
   .centeredContent {
@@ -73,56 +130,44 @@ import Card from "../components/Card.astro";
     align-items: center;
   }
 
-  .outerbox {
-    background-image: linear-gradient(
-      0deg,
-      #111111 0%,
-      rgba(227, 28, 37, 1) 5%,
-      #1c1c1c 10%,
-      #1c1c1c 90%,
-      #e31c25 95%,
-      #111111 100%
-    );
-    /*background-color: #e31c25;*/
-
-    padding: 1% 0px; /* Added a percentage value for top/bottom padding to keep the wrapper inside of the parent */
-
-    -webkit-transform: skewY(-5deg);
-    -moz-transform: skewY(-5deg);
-    -ms-transform: skewY(-5deg);
-    -o-transform: skewY(-5deg);
-    transform: skewY(-5deg);
-  }
-  .outerbox > .wrapper {
-    -webkit-transform: skewY(5deg);
-    -moz-transform: skewY(5deg);
-    -ms-transform: skewY(5deg);
-    -o-transform: skewY(5deg);
-    transform: skewY(5deg);
-  }
-  .box {
-    background-image: linear-gradient(
-      0deg,
-      rgba(227, 28, 37, 0.2) 0%,
-      #1c1c1c 2%,
-      #1c1c1c 98%,
-      rgba(227, 28, 37, 0.2) 100%
-    );
-    /*background-color: #1c1c1c;*/
-    padding: 5% 20px; /* Added a percentage value for top/bottom padding to keep the wrapper inside of the parent */
-
-    -webkit-transform: skewY(-5deg);
-    -moz-transform: skewY(-5deg);
-    -ms-transform: skewY(-5deg);
-    -o-transform: skewY(-5deg);
-    transform: skewY(-5deg);
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
   }
 
-  .box > .wrapper {
-    -webkit-transform: skewY(5deg);
-    -moz-transform: skewY(5deg);
-    -ms-transform: skewY(5deg);
-    -o-transform: skewY(5deg);
-    transform: skewY(5deg);
+  .text-gradient-rev {
+    background-image: var(--teal-gradient-rev);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .instructions {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  .instructions code {
+    font-size: 0.875em;
+    font-weight: bold;
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+    padding: 0.3em 0.45em;
+  }
+  .instructions strong {
+    color: rgb(var(--accent));
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
   }
 </style>
