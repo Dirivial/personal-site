@@ -9,7 +9,7 @@ import Header from "../components/Header.astro";
   <main>
     <div class="pt-8 flex flex-row items-center">
       <div class="h-2 w-2/4 bg-gray-600 rounded-lg"></div>
-      <h1 class="text-gradient p-2 -translate-y-1">Dirivial</h1>
+      <h1 class="text-gradient p-2 -translate-y-1 text-5xl">Dirivial</h1>
       <div class="h-2 w-full bg-gray-600 rounded-lg"></div>
     </div>
 
@@ -29,7 +29,7 @@ import Header from "../components/Header.astro";
 
     <div class="pt-24 flex flex-row items-center">
       <div class="h-2 w-full bg-gray-600 rounded-lg"></div>
-      <h1 class="text-gradient p-2 -translate-y-1">Projects</h1>
+      <h1 class="text-gradient p-2 -translate-y-1 text-4xl">Projects</h1>
       <div class="h-2 w-2/4 bg-gray-600 rounded-lg"></div>
     </div>
 
@@ -63,74 +63,11 @@ import Header from "../components/Header.astro";
 </Layout>
 
 <style>
-  main {
-    margin: auto;
-    margin-top: 2vh;
-    max-width: 100ch;
-  }
-  h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 0;
-    color: #bb000e;
-  }
-
-  p {
-    color: var(--grey-7);
-    font-family: "Quicksand", serif;
-    font-size: 1rem;
-    font-weight: thin;
-  }
-
-  .github {
-    background-color: var(--grey-0);
-    border-color: var(--grey-1);
-    box-shadow: 0px 0px 10px var(--grey-1);
-  }
-
-  .pfp {
-    border-color: var(--grey-1);
-    box-shadow: 0px 0px 10px var(--grey-1);
-  }
-
   .text-gradient {
     background-image: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 400%;
     background-position: 0%;
-  }
-
-  .text-gradient-rev {
-    background-image: var(--teal-gradient-rev);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    line-height: 1.6;
-    margin: 1rem 0;
-    border: 1px solid rgba(var(--accent), 25%);
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.4rem;
-  }
-  .instructions code {
-    font-size: 0.875em;
-    font-weight: bold;
-    background: rgba(var(--accent), 12%);
-    color: rgb(var(--accent));
-    border-radius: 4px;
-    padding: 0.3em 0.45em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
-    padding: 0;
   }
 </style>
