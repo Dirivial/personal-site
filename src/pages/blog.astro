@@ -15,11 +15,13 @@ const allPosts = await Astro.glob("../pages/blog/*.mdx");
 
     {
       allPosts.map((post) => (
-        <li class="rounded m-2 hover:scale-105 hover:bg-gray-800 transition duration-125 delay-75 list-none p-4">
+        <li class="rounded m-2 hover:scale-105 hover:bg-gray-800 transition duration-125 delay-75 list-none">
           <a href={post.url}>
-            <h3 class="text-xl text-teal-500">{post.frontmatter.title}</h3>
-            <p>{post.frontmatter.description}</p>
-            {new Date(post.frontmatter.pubDate).toDateString()}
+            <div class="p-4">
+              <h3 class="text-xl text-teal-500">{post.frontmatter.title}</h3>
+              <p>{post.frontmatter.description}</p>
+              {new Date(post.frontmatter.pubDate).toDateString()}
+            </div>
           </a>
         </li>
       ))
