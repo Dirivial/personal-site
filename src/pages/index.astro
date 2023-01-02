@@ -1,44 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import Header from "../components/Header.astro";
 ---
 
 <Layout title="Dirivial | Home">
+  <Header />
   <main>
-    <div class="centeredContent">
-      <div class="grid grid-cols-3">
-        <div class="pt-8 pb-8 flex flex-row justify-evenly gap-12">
-          <a
-            class="transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105 text-right"
-            >Blog</a
-          >
-          <a
-            class="text-right transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105"
-            >FAQ</a
-          >
-        </div>
-        <div class="m-auto">
-          <a href="/">
-            <img
-              class="text-center rounded-full border-2 pfp w-16 transition ease-linear delay-75 duration-300 hover:scale-95"
-              src="/pfp.ico"
-            />
-          </a>
-        </div>
-
-        <div class="pt-8 pb-8 flex flex-row justify-evenly gap-12">
-          <a
-            class="transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105"
-            href="https://github.com/Dirivial"
-            target="_self">Github</a
-          >
-          <a
-            class="transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-teal-500 hover:scale-105"
-            >Email</a
-          >
-        </div>
-      </div>
-    </div>
     <div class="pt-8 flex flex-row items-center">
       <div class="h-2 w-2/4 bg-gray-600 rounded-lg"></div>
       <h1 class="text-gradient p-2 -translate-y-1">Dirivial</h1>
@@ -123,12 +91,6 @@ import Card from "../components/Card.astro";
   .pfp {
     border-color: var(--grey-1);
     box-shadow: 0px 0px 10px var(--grey-1);
-  }
-
-  .centeredContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   .text-gradient {
