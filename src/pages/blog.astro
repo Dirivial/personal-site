@@ -1,11 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 const allPosts = await Astro.glob("../pages/blog/*.mdx");
 ---
 
 <Layout title="Dirivial | Blog">
-  <Header />
   <main>
     <div class="pt-8 flex flex-row items-center">
       <div class="h-2 w-1/6 bg-gray-600 rounded-lg"></div>
