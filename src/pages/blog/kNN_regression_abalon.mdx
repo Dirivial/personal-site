@@ -1,0 +1,246 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: How To Create A kNN-model In Python Using Scikit-learn and pandas
+description: "In this post I show you how you can apply a kNN regression model to a dataset of abalons to predict their age."
+pubDate: 2023-01-22
+tags:
+  ["python", "machine learning", "ML", "sklearn", "pandas", "kNN", "regression"]
+---
+
+import rings_histogram from "../../images/kNN/rings_histogram.png";
+import pred_scatter from "../../images/kNN/prediction_scatterplot.png";
+import ans_scatter from "../../images/kNN/answer_scatterplot.png";
+
+## Table of Contents
+
+# Introduction
+
+This post was made purely because I wanted to learn how to do this. I am by no means an expert at this yet so take what I say with a pinch of salt. Finally, note that we will be using a regression model rather than a classification model (altough the process is fairly similar).
+
+## Setup
+
+The packages scikit-learn and pandas are required packages if you want to follow along with this tutorial. Other packages that also are used, but are not essential are matplotlib and seaborn (both of them are for making graphs). I recommend installing these in a virtual environment as it's fairly easy to setup.
+
+<br />
+
+If you happen to run into an error called 'SSLVerificationError' then the following has worked for me (put it at the top of your python file or jupyter notebook)
+
+```python
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+```
+
+# Starting off
+
+In this tutorial we are going to use a dataset of abalons. We will soon see what variables are available to us, but to begin with we need to import the dataset.
+
+```python
+import pandas as pd
+abalone_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data'
+abalone = pd.read_csv(abalone_url, header=None)
+```
+
+With our data imported we now need to look at how it is shaped before we can do anything important with it. We do this by looking at the head of the data.
+
+```python
+abalone.head()
+```
+
+|     |  0  |   1   |   2   |   3   |   4    |   5    |   6    |   7   |  8  |
+| :-: | :-: | :---: | :---: | :---: | :----: | :----: | :----: | :---: | :-: |
+|  0  |  M  | 0.455 | 0.365 | 0.095 | 0.5140 | 0.2245 | 0.1010 | 0.150 | 15  |
+|  1  |  M  | 0.350 | 0.265 | 0.090 | 0.2255 | 0.0995 | 0.0485 | 0.070 |  7  |
+|  2  |  F  | 0.530 | 0.420 | 0.135 | 0.6770 | 0.2565 | 0.1415 | 0.210 |  9  |
+|  3  |  M  | 0.440 | 0.365 | 0.125 | 0.5160 | 0.2155 | 0.1140 | 0.155 | 10  |
+|  4  |  I  | 0.330 | 0.255 | 0.080 | 0.2050 | 0.0895 | 0.0395 | 0.055 |  7  |
+
+As you can see, there are no names on the columns. To fix this we need to manually add these. How? You may ask, well to find their respective names we can look at [abalone.names](https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/) which contains the names for each of the columns. Now we will use those names to add categories to our data.
+
+```python
+abalone.columns = [
+  "Sex",		        #nominal			M, F, and I (infant)
+	"Length",		      #continuous	mm	Longest shell measurement
+	"Diameter",	      #continuous	mm	perpendicular to length
+	"Height",		      #continuous	mm	with meat in shell
+	"Whole weight",	  #continuous	grams	whole abalone
+	"Shucked weight",	#continuous	grams	weight of meat
+	"Viscera weight",	#continuous	grams	gut weight (after bleeding)
+	"Shell weight",	  #continuous	grams	after being dried
+	"Rings",		      #integer			+1.5 gives the age in years
+]
+```
+
+When looking at these categories there is one thing that stands out. The category "Sex" is not something that is measured. We could have used this if we wanted to make a kNN classifier for the different groups male, female and infant. This is not our goal, so we will let it go since it does not add anything of value to us.
+
+```python
+abalone.drop("Sex", axis=1, inplace=True)
+```
+
+## Inspecting the Data
+
+Now that we have workable data it is often a good idea to look at how it distributed. Here we will look at exactly that by using matplotlib, a powerful way to plot data ditributions. Because the number of rings is what is used to get the age of an abalon, we will use them to see approximate in our minds how old they are.
+
+```python
+import matplotlib.pyplot as plt
+abalone["Rings"].hist(bins=15)
+plt.show()
+```
+
+<img
+  src={rings_histogram}
+  alt="Histogram over how the age of the abalons are distributed."
+/>
+
+We can clearly see that most abalons have 10 +/- 5 rings which means that most abalons in this dataset are somewhere between 6.5 to 16.6 years old.
+
+## Correlation matrix
+
+A correlation matrix describes how well the categories in our data correlate to each other (from 0-1, where 1 is direct correlation). We want to look at how well the categories correlate to the number of rings on any given abalon.
+
+```python
+correlation_matrix = abalone.corr(numeric_only=True)
+correlation_matrix["Rings"]
+```
+
+Length 0.556720 <br />
+Diameter 0.574660 <br />
+Height 0.557467 <br />
+Whole weight 0.540390 <br />
+Shucked weight 0.420884 <br />
+Viscera weight 0.503819 <br />
+Shell weight 0.627574 <br />
+Rings 1.000000 <br />
+Name: Rings, dtype: float64 <br />
+
+We can see that these correlations are fairly weak. All of them are around 0.5 with the highest being shell weight at ~62.8%. Due to this weak correlation we cannot expect a high functioning model, but we will still try.
+
+# Creating Training and Test Data
+
+Before we create our kNN regression model we need training data and test data. Without these splits we will not know whether our model is **over-** or **underfitted** (I talk a bit more about this at the end of "Tuning the Parameters").
+
+To start off we will separate input and output. We want the model to predict the age, which is more or less the number of rings on an abalon.
+
+```python
+X = abalone.drop("Rings", axis=1).values
+y = abalone["Rings"].values
+```
+
+With the input and output values separated we will now use scikit-learn to create random train and test data for us. The method being called has two parameters which may look confusing at first. **test_size** refers to how large the test dataset should be percentage wise. **random_state** allows us to have reproducible results, so use the same one as the given one if you want to get the same results as this tutorial.
+
+```python
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=12345)
+```
+
+# The kNN-model
+
+Now that we have training and test data we can create a kNN regression model and use our training data to fit it. In an elementary sense kNN works by considering each datapoints k (some integer number) nearest neighbors (other datapoints). If you want to know more on how a kNN model works, check out the last section which tries to explain it. Otherwise, just know that the number of neighbors you consider will impact performance of the model and that more is not always better.
+
+```python
+from sklearn.neighbors import KNeighborsRegressor
+knn_model = KNeighborsRegressor(n_neighbors=3)
+knn_model.fit(X_train, y_train)
+```
+
+## Analysing Performance with RMSE
+
+With our non-optimised kNN-model it is time to see how it performs. We will look at how well it predicts our train data and our test data. To do this analysis we will use the common root-mean-square error (RMSE). It works by taking the difference between the predicted and answer values, then squaring the difference and then summing them. Finally, by taking the square root of that sum you get your RMSE value. The goal is to have a **low** RMSE.
+
+```python
+from sklearn.metrics import mean_squared_error
+from math import sqrt
+train_predictions = knn_model.predict(X_train)
+rmse = sqrt(mean_squared_error(y_train, train_predictions))
+rmse
+```
+
+1.6538366794859511
+
+And then our test data.
+
+```python
+from sklearn.metrics import mean_squared_error
+from math import sqrt
+test_predictions = knn_model.predict(X_test)
+test_rmse = sqrt(mean_squared_error(y_test, test_predictions))
+test_rmse
+```
+
+2.375417924000521
+
+You may wonder why the test data gave a worse result. This is because our model was trained on the first dataset (trainig dataset), which gave it an advantage. When we then apply the model to the test dataset it lost that advantage and unfortunately that is what we can expect the model to perform like in the real world.
+
+This result is not too good. But do not give up just yet! We have not tuned our parameter **k** which _should_ increase our performance.
+
+## Tuning the Parameters
+
+Before tuning the parameters of our model we want to make sure that our model actually learned something. In this example we will use seaborn to look see if this is the case.
+
+```python
+import seaborn as sns
+cmap = sns.cubehelix_palette(as_cmap=True)
+f, ax = plt.subplots()
+points = ax.scatter(
+     X_test[:, 0], X_test[:, 1], c=test_predictions, s=30, cmap=cmap
+)
+f.colorbar(points)
+plt.show()
+```
+
+<img
+  src={pred_scatter}
+  alt="Prediction scatterplot over how the age correlates to the length and diameter."
+/>
+
+Here, the X-axis is the length and the y-axis the diameter of some abalon in our test data. The color of each dot is the prediction of how old that abalon is (more precisely, number of rings). We can see that as each abalon increases in length and diameter, their predicted age increases (this is logical, right?). Now is this still the case if we were to look at the answers?
+
+```python
+import seaborn as sns
+cmap = sns.cubehelix_palette(as_cmap=True)
+f, ax = plt.subplots()
+points = ax.scatter(
+     X_test[:, 0], X_test[:, 1], c=test_predictions, s=30, cmap=cmap
+)
+f.colorbar(points)
+plt.show()
+```
+
+<img
+  src={ans_scatter}
+  alt="Answer scatterplot over how the age correlates to the length and diameter."
+/>
+
+That seems to be correct! Our model may not predict perfectly, but it seems to be onto something!
+
+Because we know that our model is working we should now try to improve the performance by tuning the parameters. There are multiple ways to tune the them, but we will go for a common one that you will most likely see again called **GridSearch**. It works by testing each and evey one of a range of parameters to find the best combination.
+
+```python
+from sklearn.model_selection import GridSearchCV
+parameters = {'n_neighbors': range(1,30)}
+gridsearch = GridSearchCV(knn_model, parameters)
+gridsearch.fit(X_train, y_train)
+gridsearch.best_params_
+```
+
+\{'n_neighbors': 25\}
+
+Of course we also need to see how well this new model works.
+
+```python
+train_predictions_grid = gridsearch.predict(X_train)
+train_rmse_grid = sqrt(mean_squared_error(y_train, train_predictions_grid))
+test_predictions_grid = gridsearch.predict(X_test)
+test_rmse_grid = sqrt(mean_squared_error(y_test, test_predictions_grid))
+train_rmse_grid,test_rmse_grid
+```
+
+2.0731180327543384
+2.1700197339962175
+
+Well look at that, maybe not what we had hoped but an improvement is an improvement. One question might pop up when you see these results: _"Why did the train data get a worse result?"_. This is because of overfitting in our original model. When the model is overfitted to a particular dataset it works better on that dataset, but worse on others. With the closer to equal performance between the two datasets we can say that the new model with a different **k** fits less closely to the training data.
+
+# Conclusion
+
+We have looked at how to import data and inspect it to find what we need, create training and test datasets, create a kNN regression model, analyse the performance of a model performance and how to tune the parameters of a model using GridSearch. We found that by using grid search we got a slight performance boost and reduced how closely fitted the model was to our training data.
+
+I hope that you have learnt something new in this short tutorial. As I stated in the introduction, I am learning this as I go but I will probably create more posts on this topic (machine learning) in the future.
