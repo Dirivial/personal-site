@@ -107,7 +107,7 @@ sns.move_legend(scatterplot, "lower left", bbox_to_anchor=(1, 0))
 
 ## Histogram
 
-Next up is histograms, which are available with 'histplot'. These can get confusing by adding colors, but if you need them they are available. Note that unlike scatterplots these **cannot** have 'style' or 'size'.
+Next up are histograms, which are available with 'histplot'. These can get confusing by adding colors, but if you need them they are available. Note that unlike scatterplots these **cannot** have 'style' or 'size'.
 
 ```python
 sns.histplot(x='sepal_length', data=iris)
@@ -118,8 +118,12 @@ sns.histplot(x='sepal_length', data=iris)
   alt="Histogram over the sepal length in the iris data set."
 />
 The only other thing I want to show you about histograms is the kernel density estimate
-option. It may sound scary but it is simple. Take a look! ```python sns.histplot(x='sepal_length',
-data=iris, kde=True) ```
+option. It may sound scary but it is simple. Take a look!{" "}
+
+```python
+sns.histplot(x='sepal_length',
+data=iris, kde=True)
+```
 
 <img
   src={hist_kde}
@@ -128,7 +132,7 @@ data=iris, kde=True) ```
 
 ## Heatmap
 
-Before touching on a bit on the more advanced things you can do with seaborn we will take a look at heatmaps. They are great for finding correlations within data as you will see shortly. Because you are familiar with how creating plots look like by now we will jump straight into a more advanced heatmap.
+Heatmaps are great for finding correlations within data as you will see shortly. The parameter 'annot' just means that the individual boxes contain the correlation value.
 
 ```python
 sns.heatmap(iris.corr(numeric_only=True), annot=True)
