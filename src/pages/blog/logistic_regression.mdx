@@ -1,0 +1,187 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: A Guide to Logistic Regression
+description: "I take you through how Logistic Regression works, some the math behind it and how we can implement it in python. To train the model we will look at gradient descent."
+pubDate: 2023-01-28
+tags:
+  [
+    "python",
+    "logistic regression",
+    "classification",
+    "ML",
+    "machine learning",
+    "gradient descent",
+  ]
+---
+
+# Introduction
+
+In this post I will take you through how logistic regression works. I will assume that you already have some prior knowledge about machine learning and python. It would also be beneficial to know some math to follow the derivations needed for gradient descent. I will try to explain the math as much as I can because I have some trouble with it myself.
+
+<br />
+
+# What is Logistic Regression?
+
+Logistic regression is a binary classification method, meaning you can distinguish between two different categories. This might seem counterintuitive to the second part "regression". The reason it is called regression is because on the contrary to methods like KNN, we have a probability of one of the two labels.
+
+**NOTE**! You can use this method for classifying features into more than two labels but that is not within the scope of this post. Look up the _softmax_ function and/or multi-class classification (with logistic regression) if you want to research that.
+
+## Components of Logistic Regression
+
+One core component of logistic regression is the **sigmoid** function which we use for predictions. It looks like this:
+
+$$
+\hat{y} = Sigmoid(z) = \frac{1}{1 + e^{-1}}
+$$
+
+Where $z$ is the features and their corresponding weights
+
+$$
+z = x_1 * w_1 + \ldots + x_n * w_n
+$$
+
+### Loss function
+
+We need a loss function to be able to improve the model as we train it. It is called a _Binary Cross-Entropy_ loss function.
+
+$$
+L_{\hat{y}} = \begin{cases}
+-log(\hat{y}) &\text{if } y = 1\\
+-log(1-\hat{y}) &\text{if } y = 0
+\end{cases}
+$$
+
+We can convert this function to a single line by utilizing $y$ and $(1 - y)$, since y can only be $0$ or $1$.
+
+$$
+L(y,\hat{y}) = - \frac{1}{m} \sum^{m}_{i=1}{[ y_i * log(\hat{y}_i) + (1-y_i)*log(1-\hat{y}_i)]}
+$$
+
+This is the function we will use moving forward.
+
+## Gradient Descent
+
+Training the model is all about minimizing the loss function (while avoiding overfitting). We will use gradient descent to do just that.
+
+To be able to use gradient descent we need the derivatives of the loss function and its parts.
+
+By only focusing on the part within the sum function (think of using one sample) of our loss function we can start derivating.
+
+$$
+-1 * ( y * log(\hat{y}) + (1-y)*log(1-\hat{y}))
+$$
+
+A problem we have is that $\hat{y}$ is a function itself. But thanks to the [Chain Rule](https://en.wikipedia.org/wiki/Chain_rule) we can still find the derivatives.
+
+### Part One
+
+The derivative of the natural logarithm is this:
+
+$$
+n * log(x) = \frac{n}{x}
+$$
+
+By using that rule and the chain rule, we can find the derivative of the extracted part mentioned earlier.
+
+First we divide into two parts
+
+$$
+\Big[ -1 * ( y * log(\hat{y}) + (1-y)*log(1-\hat{y})) \Big]' \rightarrow \Big[ -y * log(\hat{y}) \Big] and \Big[ -(1-y)*log(1-\hat{y}) \Big]
+$$
+
+Then the first part can easily be derived
+
+$$
+\Big[ -y * log(\hat{y}) \Big]' \rightarrow \Big[ \frac{-y}{\hat{y}} \Big]
+$$
+
+And the second part as well, although slightly more complicated
+
+$$
+\Big[ -1 * (1-y)*log(1-\hat{y}) \Big] \rightarrow \Big[ -1 * -1 * \frac{1-y}{1-\hat{y}} \Big] \rightarrow \Big[ \frac{1-y}{1-\hat{y}} \Big]
+$$
+
+Finally, we add them together again
+
+$$
+\Big[ \frac{-y}{\hat{y}} + \frac{1-y}{1-\hat{y}} \Big]
+$$
+
+Simplify, with the help of some tool like wolfram alpha or whatever you prefer.
+
+$$
+\frac{-y}{\hat{y}} + \frac{1-y}{1-\hat{y}} \rightarrow \frac{\hat{y}-y}{\hat{y}(1-\hat{y})}
+$$
+
+## Part Two
+
+The next step is to derivate $\hat{y}$ (the sigmoid function). If you want all the steps, you can google or take a look at [this article](https://towardsdatascience.com/derivative-of-the-sigmoid-function-536880cf918e). I skip multiple steps as it is pretty long, but essentially it looks like this:
+
+$$
+\Big[ \frac{1}{(1+e^{-z})} \Big]' \rightarrow \Big[ \frac{1}{(1+e^{-z})} - \frac{1}{(1+e^{-z})^2} \Big] \rightarrow \\ \Big[ \frac{1}{(1+e^{-z})} * (1 - \frac{1}{(1+e^{-z})}) \Big] \rightarrow sigmoid(z) * (1-sigmoid(z)) \rightarrow \\ \hat{y} * (1-\hat{y})
+$$
+
+## Part Three
+
+The final part of the puzzle is to find the derivative of $z$. What is important to notice is that we want to find the derivative of $z$ in respect to the feature weights. This means that for each weight $w_i$, the derivative of $z$ with respect to $w_i$ is its corresponding feature $x_i$.
+
+This leads to our final, complete derivative. All we need is to multiply the different parts with one another in accordance with the chain rule and we are done!
+
+$$
+\frac{\hat{y}-y}{\hat{y}(1-\hat{y})} * \hat{y} (1-\hat{y}) * x_i \rightarrow x_i(\hat{y}-y)
+$$
+
+Now that we have the derivative, we can implement gradient descent!
+
+# Implementing in Python
+
+```python
+# Required
+import numpy as np
+```
+
+```python
+class LogisticRegression:
+  def sigmoid(self, z):
+    return 1 / (1 + np.exp(-z))
+
+  def cost_function(self, X, y, weights):
+    # Multiply each x_i with its corresponding weight
+    z = np.dot(X, weights)
+
+    # Calculate the prediction
+    y_hat = self.sigmoid(z)
+
+    # Calculate the loss
+    predict_1 = y * np.log(y_hat)
+    predict_0 = (1 - y) * np.log(1 - y_hat)
+
+    # Return the average loss
+    return -np.sum(predict_1 + predict_0) / len(X)
+
+  def fit(self, X, y, learning_rate=0.05, epochs=25):
+    # Initialize the weights to random values and after that a loss array
+    weights = np.random.rand(X.shape[1])
+    loss = []
+
+    for _ in range(epochs):
+      # Calculate the prediction
+      z = np.dot(X, weights)
+      y_hat = self.sigmoid(z)
+
+      # Gradient descent vector (division to normalize)
+      gradient_vector = np.dot(X.T, (y_hat - y)) / len(X)
+
+      # Update the weights
+      weights -= learning_rate * gradient_vector
+
+      # Record loss
+      loss.append(self.cost_function(X, y, weights))
+
+    self.weights = weights
+    self.loss = loss
+
+  def predict(self, X):
+    z = np.dot(X, self.weights)
+    return [1 if i > 0.5 else 0 for i in self.sigmoid(z)]
+```
