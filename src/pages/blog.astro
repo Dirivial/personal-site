@@ -6,9 +6,9 @@ const allPosts = await Astro.glob("../pages/blog/*.mdx");
 <Layout title="Dirivial | Blog">
   <main>
     <div class="pt-8 flex flex-row items-center">
-      <div class="h-2 w-1/6 bg-gray-600 rounded-lg"></div>
-      <h1 class="text-gradient p-2 -translate-y-1 text-5xl">Blog</h1>
-      <div class="h-2 w-full bg-gray-600 rounded-lg"></div>
+      <div class="h-2 w-1/6 rounded-lg special-div"></div>
+      <h1 class="text-gradient p-2 -translate-y-3 text-5xl">Blog</h1>
+      <div class="h-2 w-full rounded-lg special-div"></div>
     </div>
 
     {
@@ -16,7 +16,7 @@ const allPosts = await Astro.glob("../pages/blog/*.mdx");
         <li class="rounded m-2 hover:scale-105 hover:bg-gray-800 transition duration-125 delay-75 list-none">
           <a href={post.url}>
             <div class="p-4">
-              <h3 class="text-xl text-teal-500">{post.frontmatter.title}</h3>
+              <h3 class="text-xl text-fuchsia-500">{post.frontmatter.title}</h3>
               <p>{post.frontmatter.description}</p>
               {new Date(post.frontmatter.pubDate).toDateString()}
             </div>
