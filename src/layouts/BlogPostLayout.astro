@@ -10,6 +10,7 @@ const {
   content: { title, description, pubDate },
 } = Astro.props;
 import Header from "../components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <!DOCTYPE html>
@@ -34,13 +35,14 @@ import Header from "../components/Header.astro";
       integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC"
       crossorigin="anonymous"
     />
+    <ViewTransitions />
   </head>
   <body>
     <main>
       <Header />
       <article class="mt-3 p-1">
-        <h1 class="text-4xl text-gradient pb-3">{title}</h1>
-        <p class="">On {new Date(pubDate).toDateString()}</p>
+        <h1 class="text-4xl text-gradient pb-3" transition:name={title}>{title}</h1>
+        <p class="" transition:name={new Date(pubDate).toDateString()}>On {new Date(pubDate).toDateString()}</p>
         <hr class="border-gray-600 my-6" />
         <slot />
       </article>
@@ -110,7 +112,6 @@ import Header from "../components/Header.astro";
 
   main {
     margin: auto;
-    margin-top: 2vh;
     margin-bottom: 2vh;
     max-width: 100ch;
   }

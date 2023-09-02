@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 const allPosts = await Astro.glob("../pages/blog/*.mdx");
+
 ---
 
 <Layout title="Dirivial | Blog">
@@ -12,13 +13,13 @@ const allPosts = await Astro.glob("../pages/blog/*.mdx");
     </div>
 
     {
-      allPosts.map((post) => (
+      allPosts.sort((a, b) => new Date(a.frontmatter.pubDate).getDate() - new Date(b.frontmatter.pubDate).getDate()).map((post) => (
         <li class="rounded m-2 hover:scale-105 hover:bg-gray-800 transition duration-125 delay-75 list-none">
           <a href={post.url}>
             <div class="p-4">
-              <h3 class="text-xl text-fuchsia-500">{post.frontmatter.title}</h3>
+              <h3 class="text-xl text-fuchsia-500" transition:name={post.frontmatter.title}>{post.frontmatter.title}</h3>
               <p>{post.frontmatter.description}</p>
-              {new Date(post.frontmatter.pubDate).toDateString()}
+              <p transition:name={new Date(post.frontmatter.pubDate).toDateString()}>{new Date(post.frontmatter.pubDate).toDateString()}</p>
             </div>
           </a>
         </li>
