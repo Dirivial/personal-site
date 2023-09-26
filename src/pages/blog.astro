@@ -1,35 +1,59 @@
 ---
 import Layout from "../layouts/Layout.astro";
 const allPosts = await Astro.glob("../pages/blog/*.mdx");
-
 ---
 
 <Layout title="Dirivial | Blog">
   <main>
-    <div class="pt-8 flex flex-row justify-around items-center">
+    <div class="py-8 flex flex-row justify-around items-center">
       <a href="/">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-arrow-thin-left-circle fill-white w-10 hover:fill-slate-400 hover:-translate-x-1 transition-all"><path class="secondary" d="M9.41 11H17a1 1 0 0 1 0 2H9.41l2.3 2.3a1 1 0 1 1-1.42 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.42 1.4L9.4 11z"/></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="icon-arrow-thin-left-circle fill-white w-10 hover:fill-slate-400 hover:-translate-x-1 transition-all"
+          ><path
+            class="secondary"
+            d="M9.41 11H17a1 1 0 0 1 0 2H9.41l2.3 2.3a1 1 0 1 1-1.42 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.42 1.4L9.4 11z"
+          ></path></svg
+        >
       </a>
       <h1
         class="text-white epic-text text-4xl align-middle tracking-wider underline underline-offset-8 decoration-2"
       >
         BLOG
       </h1>
-      <div/>
+      <div></div>
     </div>
 
     {
-      allPosts.sort((a, b) => new Date(a.frontmatter.pubDate).getDate() - new Date(b.frontmatter.pubDate).getDate()).map((post) => (
-        <li class="rounded m-2 hover:scale-105 hover:bg-gray-800 transition duration-125 delay-75 list-none">
-          <a href={post.url}>
-            <div class="p-4">
-              <h3 class="text-xl text-fuchsia-500" transition:name={post.frontmatter.title}>{post.frontmatter.title}</h3>
-              <p>{post.frontmatter.description}</p>
-              <p transition:name={new Date(post.frontmatter.pubDate).toDateString()}>{new Date(post.frontmatter.pubDate).toDateString()}</p>
-            </div>
-          </a>
-        </li>
-      ))
+      allPosts
+        .sort(
+          (a, b) =>
+            new Date(a.frontmatter.pubDate).getDate() -
+            new Date(b.frontmatter.pubDate).getDate()
+        )
+        .map((post) => (
+          <li class="rounded m-2 hover:scale-105 hover:bg-gray-800 transition duration-125 delay-75 list-none">
+            <a href={post.url}>
+              <div class="pb-2 px-4 pt-1">
+                <h3
+                  class="text-2xl text-white pb-2"
+                  transition:name={post.frontmatter.title}
+                >
+                  {post.frontmatter.title}
+                </h3>
+                <p>{post.frontmatter.description}</p>
+                <p
+                  transition:name={new Date(
+                    post.frontmatter.pubDate
+                  ).toDateString()}
+                >
+                  {new Date(post.frontmatter.pubDate).toDateString()}
+                </p>
+              </div>
+            </a>
+          </li>
+        ))
     }
   </main>
 </Layout>
@@ -49,14 +73,14 @@ const allPosts = await Astro.glob("../pages/blog/*.mdx");
   }
 
   .epic-text {
-        text-shadow:
-          0px 0px 5px rgba(255, 255, 255, 1),
-          0px 0px 10px rgba(255, 255, 255, 0.3),
-          0px 0px 15px rgba(255, 255, 255, 0.5),
-          0px 0px 20px var(--grey-0),
-          0px 0px 30px var(--grey-0),
-          0px 0px 40px var(--grey-0),
-          0px 0px 55px var(--grey-0),
-          0px 0px 75px var(--grey-0);
-      }
+    text-shadow:
+      0px 0px 5px rgba(255, 255, 255, 1),
+      0px 0px 10px rgba(255, 255, 255, 0.3),
+      0px 0px 15px rgba(255, 255, 255, 0.5),
+      0px 0px 20px var(--grey-0),
+      0px 0px 30px var(--grey-0),
+      0px 0px 40px var(--grey-0),
+      0px 0px 55px var(--grey-0),
+      0px 0px 75px var(--grey-0);
+  }
 </style>

@@ -4,7 +4,6 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
 ---
 
@@ -87,7 +86,7 @@ import { ViewTransitions } from "astro:transitions";
       }
       html {
         font-family: "Jost", system-ui, sans-serif;
-        background-color: var(--black);
+        background-color: #000000;
       }
       code {
         font-family:
@@ -113,7 +112,6 @@ import { ViewTransitions } from "astro:transitions";
       main {
         margin: auto;
         margin-top: 2vh;
-        max-width: 100ch;
       }
 
       .epic-text {

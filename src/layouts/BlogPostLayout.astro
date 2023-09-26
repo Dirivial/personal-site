@@ -13,7 +13,7 @@ import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -40,193 +40,196 @@ import { ViewTransitions } from "astro:transitions";
       href="https://fonts.googleapis.com/css2?family=Jost"
     />
     <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Kumbh+Sans"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans"
     />
     <ViewTransitions />
   </head>
   <body>
     <main>
       <article class="mt-3 p-1">
-        <h1 class="text-4xl text-gradient pb-3" transition:name={title}>{title}</h1>
-        <p class="" transition:name={new Date(pubDate).toDateString()}>On {new Date(pubDate).toDateString()}</p>
+        <h1 class="epic-text text-4xl pb-3" transition:name={title}>
+          {title}
+        </h1>
+        <p class="" transition:name={new Date(pubDate).toDateString()}>
+          On {new Date(pubDate).toDateString()}
+        </p>
         <hr class="border-gray-600 my-6" />
         <slot />
       </article>
     </main>
+    <style is:global>
+      :root {
+        --black: #001921ff;
+        --grey-0: hsl(209, 61%, 16%);
+        --grey-1: hsl(211, 39%, 23%);
+        --grey-2: hsl(209, 34%, 30%);
+        --grey-3: hsl(209, 28%, 39%);
+        --grey-4: hsl(210, 22%, 49%);
+        --grey-5: hsl(209, 23%, 60%);
+        --grey-6: hsl(211, 27%, 70%);
+        --grey-7: hsl(210, 31%, 80%);
+        --grey-8: hsl(212, 33%, 89%);
+        --grey-9: hsl(210, 36%, 96%);
+        --teal-0: hsl(295, 85%, 18%);
+        --teal-1: hsl(294, 72%, 25%);
+        --teal-2: hsl(294, 68%, 32%);
+        --teal-3: hsl(294, 60%, 38%);
+        --teal-4: hsl(294, 48%, 46%);
+        --teal-5: hsl(294, 43%, 51%);
+        --teal-6: hsl(293, 48%, 58%);
+        --teal-7: hsl(293, 54%, 68%);
+        --teal-8: hsl(293, 67%, 85%);
+        --teal-9: hsl(295, 58%, 93%);
+
+        --accent: 187, 0, 14;
+        --accent-gradient: linear-gradient(
+          20deg,
+          var(--teal-1),
+          var(--teal-3) 30%,
+          var(--teal-9) 60%
+        );
+        --teal-gradient: linear-gradient(
+          90deg,
+          var(--teal-0),
+          var(--teal-3) 50%,
+          var(--teal-5) 100%
+        );
+        --teal-gradient-rev: linear-gradient(
+          225deg,
+          var(--teal-5),
+          var(--teal-3) 25%,
+          var(--teal-0) 80%
+        );
+      }
+
+      html {
+        font-family: "Jost", system-ui, sans-serif;
+        background-color: var(--black);
+        scroll-behavior: smooth;
+      }
+
+      code {
+        font-family: "Roboto", system-ui, sans-serif;
+        /* font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace; */
+      }
+
+      main {
+        margin: auto;
+        margin-bottom: 2vh;
+        max-width: 100ch;
+      }
+
+      p {
+        margin-top: 3vh;
+        color: var(--grey-7);
+        font-family: "Jost", serif;
+        font-size: 1.25rem;
+        font-weight: thin;
+      }
+
+      li > p {
+        margin-top: 0;
+      }
+
+      li {
+        list-style: disc;
+        margin-left: 1.5vh;
+        margin-top: 1vh;
+        color: var(--grey-7);
+        font-family: "Jost", serif;
+      }
+
+      article > img {
+        margin: auto;
+        padding-bottom: 1vh;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin-top: 2vh !important;
+        color: var(--grey-9);
+        font-family: "Kumbh Sans", sans-serif;
+        font-weight: bold !important;
+      }
+
+      h1 {
+        font-size: 2.2rem !important;
+      }
+
+      h2 {
+        font-size: 1.75rem !important;
+      }
+
+      h3 {
+        font-size: 1.5rem !important;
+      }
+
+      pre {
+        border-radius: 3px;
+        padding: 0.5rem;
+        margin: 1rem;
+      }
+
+      strong {
+        color: var(--grey-9);
+        font-weight: bolder;
+      }
+
+      article a {
+        color: var(--teal-3);
+        font-family: "Roboto", serif;
+        font-style: bold;
+        text-decoration: underline;
+      }
+
+      .epic-text {
+        text-shadow:
+          0px 0px 5px rgba(255, 255, 255, 1),
+          0px 0px 10px rgba(255, 255, 255, 0.3),
+          0px 0px 15px rgba(255, 255, 255, 0.5),
+          0px 0px 20px var(--grey-0),
+          0px 0px 30px var(--grey-0),
+          0px 0px 40px var(--grey-0),
+          0px 0px 55px var(--grey-0),
+          0px 0px 75px var(--grey-0);
+      }
+
+      .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+      }
+
+      .math > span {
+        color: var(--grey-7);
+      }
+
+      /* Table styling */
+      table {
+        border-collapse: collapse;
+        margin: auto;
+        padding: 3vh;
+        font-weight: thin;
+        color: var(--grey-7);
+        background-color: var(--grey-3);
+      }
+
+      th,
+      td {
+        padding: 1vh;
+      }
+
+      tbody tr:nth-child(odd) {
+        background-color: var(--grey-1);
+      }
+      tbody tr:nth-child(even) {
+        background-color: var(--grey-2);
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  :root {
-    --black: #001921ff;
-    --grey-0: hsl(209, 61%, 16%);
-    --grey-1: hsl(211, 39%, 23%);
-    --grey-2: hsl(209, 34%, 30%);
-    --grey-3: hsl(209, 28%, 39%);
-    --grey-4: hsl(210, 22%, 49%);
-    --grey-5: hsl(209, 23%, 60%);
-    --grey-6: hsl(211, 27%, 70%);
-    --grey-7: hsl(210, 31%, 80%);
-    --grey-8: hsl(212, 33%, 89%);
-    --grey-9: hsl(210, 36%, 96%);
-    --teal-0: hsl(295, 85%, 18%);
-    --teal-1: hsl(294, 72%, 25%);
-    --teal-2: hsl(294, 68%, 32%);
-    --teal-3: hsl(294, 60%, 38%);
-    --teal-4: hsl(294, 48%, 46%);
-    --teal-5: hsl(294, 43%, 51%);
-    --teal-6: hsl(293, 48%, 58%);
-    --teal-7: hsl(293, 54%, 68%);
-    --teal-8: hsl(293, 67%, 85%);
-    --teal-9: hsl(295, 58%, 93%);
-
-    --accent: 187, 0, 14;
-    --accent-gradient: linear-gradient(
-      20deg,
-      var(--teal-1),
-      var(--teal-3) 30%,
-      var(--teal-9) 60%
-    );
-    --teal-gradient: linear-gradient(
-      90deg,
-      var(--teal-0),
-      var(--teal-3) 50%,
-      var(--teal-5) 100%
-    );
-    --teal-gradient-rev: linear-gradient(
-      225deg,
-      var(--teal-5),
-      var(--teal-3) 25%,
-      var(--teal-0) 80%
-    );
-  }
-
-  html {
-    font-family: "Jost", system-ui, sans-serif;
-    background-color: var(--black);
-    scroll-behavior: smooth;
-  }
-
-  code {
-    font-family: "Roboto", system-ui, sans-serif;
-    /* font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace; */
-  }
-
-  main {
-    margin: auto;
-    margin-bottom: 2vh;
-    max-width: 100ch;
-  }
-
-  p {
-    margin-top: 3vh;
-    color: var(--grey-7);
-    font-family: "Jost", serif;
-    font-size: 1.25rem;
-    font-weight: thin;
-  }
-
-  li > p {
-    margin-top: 0;
-  }
-
-  li {
-    list-style: disc;
-    margin-left: 1.5vh;
-    margin-top: 1vh;
-    color: var(--grey-7);
-    font-family: "Jost", serif;
-  }
-
-
-
-  article > img {
-    margin: auto;
-    padding-bottom: 1vh;
-  }
-
-  h1,
-  h2,
-  h3 {
-    margin-top: 2vh !important;
-    color: var(--grey-9);
-    font-family: "Kumbh Sans", sans-serif;
-    font-weight: bold !important;
-  }
-
-  h1 {
-    font-size: 2.2rem !important;
-  }
-
-  h2 {
-    font-size: 1.75rem !important;
-  }
-
-  h3 {
-    font-size: 1.5rem !important;
-  }
-
-  pre {
-    border-radius: 3px;
-    padding: 0.5rem;
-    margin: 1rem;
-  }
-
-  strong {
-    color: var(--grey-9);
-    font-weight: bolder;
-  }
-
-  article a {
-    color: var(--teal-3);
-    font-family: "Roboto", serif;
-    font-style: bold;
-    text-decoration: underline;
-  }
-
-  .epic-text {
-    text-shadow: 0px 0px 5px rgba(255, 255, 255, 1),
-    0px 0px 10px rgba(255, 255, 255, 1),
-    0px 0px 15px rgba(255, 255, 255, 1),
-    0px 0px 20px rgba(73, 255, 24, 1),
-    0px 0px 30px rgba(73, 255, 24, 1),
-    0px 0px 40px rgba(73, 255, 24, 1),
-    0px 0px 55px rgba(73, 255, 24, 1),
-    0px 0px 75px rgba(73, 255, 24, 1);
-  }
-
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-
-  .math > span {
-    color: var(--grey-7);
-  }
-
-  /* Table styling */
-  table {
-    border-collapse: collapse;
-    margin: auto;
-    padding: 3vh;
-    font-weight: thin;
-    color: var(--grey-7);
-    background-color: var(--grey-3);
-  }
-
-  th,
-  td {
-    padding: 1vh;
-  }
-
-  tbody tr:nth-child(odd) {
-    background-color: var(--grey-1);
-  }
-  tbody tr:nth-child(even) {
-    background-color: var(--grey-2);
-  }
-</style>

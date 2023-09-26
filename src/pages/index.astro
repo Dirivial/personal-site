@@ -3,94 +3,113 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 ---
 
-<script>
-  var subtext = document.getElementById("subtext");
-  var final = "or just call me Alex.";
-  window.onload = () => {
-    if (!subtext) {
-      console.log();
-    }
-    setInterval(() => {
-      if (!subtext) return;
-      subtext.innerHTML = final.substring(0, subtext.innerHTML.length + 1);
-    }, 100);
-  };
-</script>
-
 <Layout title="Dirivial | Home">
-  <main>
-    <div class="flex flex-col items-center h-screen justify-center">
+  <main class="">
+    <div class="flex flex-col items-center justify-center h-screen">
+      <div class="stars"></div>
+      <div class="twinkling"></div>
       <h1
-        class="text-white epic-text text-7xl font-extrabold align-middle tracking-wider underline underline-offset-8 decoration-2"
+        id="name"
+        class="absolute text-white opacity-100 -translate-y-14 z-10 epic-text text-7xl font-extrabold align-middle tracking-wider underline underline-offset-8 decoration-2 transition-all duration-300"
       >
-        {" "}DIRIVIAL
+        DIRIVIAL
       </h1>
-      <p id="subtext" class="pt-2 font-medium text-xl"></p>
+      <p id="subtext" class="pt-2 z-10 font-medium text-xl"></p>
     </div>
 
-    <div class="pt-4 flex flex-col items-center">
-      <p class="w-3/5 text-2xl text-center">
-        Hi there! I'm a programmer who likes to do some web & game development
-        in his free time.
-      </p>
+    <div class="gridpattern">
+      <div
+        class="z-20 bg-gradient-to-r from-black via-transparent to-black w-full h-full"
+      >
+        <div
+          class="z-20 pt-44 pb-52 bg-gradient-to-b from-black via-transparent to-black w-full h-full"
+        >
+          <p class="w-3/5 md:text-2xl text-xl text-center mx-auto">
+            Hi there! I'm a programmer who likes to do some web & game
+            development in his free time.
+          </p>
 
-      <div class="pt-16 grid grid-cols-3 gap-16 w-3/4">
-        <a
-        href="https://github.com/Dirivial"
-        class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">Github</a>
-        <a
-        href="https://twitter.com/Dirivial"
-        class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">Twitter</a>
-        
-        <a
-          href="https://www.youtube.com/channel/UC0Awfhr7Yl0tRYrVD2K6ZsQ"
-          class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">YouTube</a>
-      </div>
-      <div class="pt-8 grid grid-cols-2 gap-16 w-2/4">
-        <a
-          href="/blog"
-          class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">Blog</a>
-          <a
-          href="/faq"
-          class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">About</a>
-          
-</div>
-          <div class="pt-8 grid grid-cols-1 gap-16 w-1/4">
+          <div
+            class="pt-16 grid grid-cols-3 xl:gap-16 gap-8 xl:w-2/5 lg:w-2/4 md:w-3/4 w-5/6 mx-auto"
+          >
+            <a
+              href="https://github.com/Dirivial"
+              class="text-2xl linkthing py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all"
+              >Github</a
+            >
+            <a
+              href="https://twitter.com/Dirivial"
+              class="text-2xl linkthing py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all"
+              >Twitter</a
+            >
+
+            <a
+              href="https://www.youtube.com/channel/UC0Awfhr7Yl0tRYrVD2K6ZsQ"
+              class="text-2xl py-2 linkthing text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all"
+              >YouTube</a
+            >
+          </div>
+          <div
+            class="pt-8 grid grid-cols-2 xl:gap-16 gap-8 w-4/6 xl:w-1/5 lg:w-1/4 mx-auto"
+          >
+            <a
+              href="/blog"
+              class="text-2xl linkthing py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all"
+              >Blog</a
+            >
+            <a
+              href="/faq"
+              class="text-2xl linkthing py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all"
+              >About</a
+            >
+          </div>
+          <div
+            class="pt-8 grid grid-cols-1 xl:gap-16 gap-8 w-1/3 xl:w-1/12 lg:w-2/12 mx-auto"
+          >
             <a
               href="mailto:alexander.kadeby@gmail.com"
-              class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">E-Mail</a>
+              class="text-2xl py-2 linkthing text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all"
+              >E-Mail</a
+            >
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="pt-64 flex flex-col items-center">
-      <h1
-        class="text-white epic-text text-4xl align-middle tracking-wider underline underline-offset-8 decoration-2"
+    <div
+      class="z-20 w-full h-full bg-gradient-to-bl from-black to-black via-slate-800"
+    >
+      <div
+        class="pt-16 flex flex-col items-center from-black to-black bg-gradient-to-br via-transparent"
       >
-        PROJECTS
-      </h1>
-    </div>
+        <h1
+          class="py-16 text-white epic-text text-4xl align-middle tracking-wider underline underline-offset-8 decoration-2"
+        >
+          PROJECTS
+        </h1>
 
-    <div class="pt-16 flex flex-col items-center">
-      <div class="grid grid-cols-2 gap-8 w-4/5">
-        <Card
-          title="Habits"
-          body="A good 'ol habit tracker."
-          href="https://github.com/Dirivial/habits"
-        />
-        <Card
-          title="CastleMania"
-          body="A 3D game made in unity to learn wave function collapse."
-          href="https://github.com/Dirivial/CastleMania"
-        />
-        <Card
-          title="dirivial.dev"
-          body="This website you're on right now!"
-          href="https://github.com/Dirivial/personal-site"
-        />
-        <Card
-          title="A-maze-d"
-          body="Small website for viewing a depth first search solving a maze"
-          href="https://github.com/Dirivial/a-maze-d"
-        />
+        <div class="grid grid-cols-2 gap-8 w-3/5">
+          <Card
+            title="Habits"
+            body="A good 'ol habit tracker."
+            href="https://github.com/Dirivial/habits"
+          />
+          <Card
+            title="CastleMania"
+            body="A 3D game made in unity to learn wave function collapse."
+            href="https://github.com/Dirivial/CastleMania"
+          />
+          <Card
+            title="dirivial.dev"
+            body="This website you're on right now!"
+            href="https://github.com/Dirivial/personal-site"
+          />
+          <Card
+            title="A-maze-d"
+            body="Small website for viewing a depth first search solving a maze"
+            href="https://github.com/Dirivial/a-maze-d"
+          />
+        </div>
       </div>
     </div>
 
@@ -98,12 +117,99 @@ import Card from "../components/Card.astro";
   </main>
 </Layout>
 
+<script is:inline>
+var final = "or just call me Alex.";
+
+setInterval(() => {
+  var subtext = document.getElementById("subtext");
+  if (subtext && subtext.innerHTML.length < final.length) {
+    subtext.innerHTML = final.substring(0, subtext.innerHTML.length + 1);
+  }
+}, 100);
+</script>
+
 <style>
+  .linkthing {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
   .text-gradient {
     background-image: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 400%;
     background-position: 0%;
+  }
+
+  @keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+  @-webkit-keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+  @-moz-keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+  @-ms-keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+
+  .stars,
+  .twinkling,
+  .clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .stars {
+    background: #000
+      url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top
+      center;
+    z-index: 0;
+  }
+
+  .twinkling {
+    background: transparent
+      url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat
+      top center;
+    z-index: 1;
+
+    -moz-animation: move-twink-back 200s linear infinite;
+    -ms-animation: move-twink-back 200s linear infinite;
+    -o-animation: move-twink-back 200s linear infinite;
+    -webkit-animation: move-twink-back 200s linear infinite;
+    animation: move-twink-back 200s linear infinite;
+  }
+
+  .gridpattern {
+    background-size: 20px 20px;
+    background-image: linear-gradient(to right, #80808080 1px, transparent 1px),
+      linear-gradient(to bottom, #80808080 1px, transparent 1px);
   }
 </style>
