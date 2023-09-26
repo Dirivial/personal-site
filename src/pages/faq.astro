@@ -4,45 +4,53 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Dirivial | FAQ">
   <main>
-    <div class="pt-8 flex flex-row items-center">
-      <div class="h-2 w-1/6 rounded-lg special-div"></div>
-      <h1 class="text-gradient p-2 -translate-y-1 text-5xl">FAQ</h1>
-      <div class="h-2 w-full rounded-lg special-div"></div>
+    <div class="pt-8 flex flex-row justify-around items-center">
+      <a href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-arrow-thin-left-circle fill-white w-10 hover:fill-slate-400 hover:-translate-x-1 transition-all"><path class="secondary" d="M9.41 11H17a1 1 0 0 1 0 2H9.41l2.3 2.3a1 1 0 1 1-1.42 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.42 1.4L9.4 11z"/></svg>
+      </a>
+      <h1
+        class="text-white epic-text text-4xl align-middle tracking-wider underline underline-offset-8 decoration-2"
+      >
+        ABOUT
+      </h1>
+      <div/>
     </div>
 
-    <div class="flex flex-col items-center mt-6 mb-16">
-      <section class="w-5/6">
-        <div class="flex flex-col space-y-4">
-          <div class="flex flex-col space-y-2">
-            <h3 class="text-2xl text-gray-400">
+    <div class="flex flex-col items-center justify-center mt-6 mb-16">
+      <section class="pt-12 w-5/6">
+        <div class="grid gap-y-8 grid-cols-1 justify-items-center">
+          <div class="flex flex-col space-y-2 items-center w-3/4">
+            <h3 class="text-2xl text-gray-300 text-center">
               What is the origin of the name Dirivial?
             </h3>
-            <p class="text-gray-400">
+            <p class="text-gray-400 p-2">
               It is relatively straight forward, I like the band Dire Straights
               so I thought I could include that somehow (Hence 'Di'). For the
               rest of the name I just went to <a
                 class="font-bold text-gray-300"
                 target="_blank"
                 href="https://www.dictionary.com/">dictionary.com</a
-              > and took the daily word 'Trivial'. I then combined the two to get
-              'Dirivial'.
+              > and took the daily word 'Trivial'. I then combined the two to
+              get 'Dirivial'.
             </p>
           </div>
-          <div class="flex flex-col space-y-2">
-            <h3 class="text-2xl text-gray-400">
+          <div class="flex flex-col space-y-2 items-center w-3/4">
+            <h3 class="text-2xl text-gray-200  text-center">
               What is your text editor of choice?
             </h3>
             <p class="text-gray-400">
-              I mainly use VSCode, but I also like to use Neovim when I'm
-              feeling spicy. If you want to get started with Neovim, I recommend <a
+              I mainly use VSCode, but I also like to use Neovim whenever I'm
+              feeling spicy. If you want to get started with Neovim, I recommend
+
+              <a
                 class="font-bold text-gray-300"
                 target="_blank"
                 href="https://www.lunarvim.org/">lunarvim</a
               >
             </p>
           </div>
-          <div class="flex flex-col space-y-2">
-            <h3 class="text-2xl text-gray-400">What is your favorite OS?</h3>
+          <div class="flex flex-col space-y-2 items-center w-3/4">
+            <h3 class="text-2xl text-gray-300 text-center">What is your favorite OS?</h3>
             <p class="text-gray-400">
               I currently use MacOS, <a
                 class="font-bold text-gray-300"
@@ -57,8 +65,8 @@ import Layout from "../layouts/Layout.astro";
               just to play games but the other two are my main OSes.
             </p>
           </div>
-          <div class="flex flex-col space-y-2">
-            <h3 class="text-2xl text-gray-400">
+          <div class="flex flex-col space-y-2 items-center w-3/4">
+            <h3 class="text-2xl text-gray-300  text-center">
               What color scheme do you use?
             </h3>
             <p class="text-gray-400">
@@ -66,13 +74,13 @@ import Layout from "../layouts/Layout.astro";
                 class="font-bold text-gray-300"
                 target="_blank"
                 href="https://github.com/catppuccin">catppuccin</a
-              > theme for Neovim and VSCode. I have even configured my linux setup
-              to use that theme.
+              > theme for Neovim and VSCode. I have even configured my linux
+              setup to use that theme.
             </p>
           </div>
 
-          <div class="flex flex-col space-y-2">
-            <h3 class="text-2xl text-gray-400">
+          <div class="flex flex-col space-y-2 items-center w-3/4">
+            <h3 class="text-2xl text-gray-300">
               Which terminal emulator do you use?
             </h3>
             <p class="text-gray-400">
@@ -88,8 +96,8 @@ import Layout from "../layouts/Layout.astro";
             </p>
           </div>
 
-          <div class="flex flex-col space-y-2">
-            <h3 class="text-2xl text-gray-400">
+          <div class="flex flex-col space-y-2 items-center w-3/4">
+            <h3 class="text-2xl text-gray-300 text-center">
               Do you have a favorite framework for web development?
             </h3>
             <p class="text-gray-400">
@@ -105,8 +113,8 @@ import Layout from "../layouts/Layout.astro";
             </p>
           </div>
 
-          <div class="flex flex-col space-y-2">
-            <h3 class="text-2xl text-gray-400">
+          <div class="flex flex-col space-y-2 items-center w-3/4">
+            <h3 class="text-2xl text-gray-300 text-center">
               What programming languages do you know?
             </h3>
             <p class="text-gray-400">
@@ -118,7 +126,8 @@ import Layout from "../layouts/Layout.astro";
                 class="font-bold text-gray-300"
                 target="_blank"
                 href="https://adventofcode.com/">AOC</a
-              > . In school I have had to use C, Java and Python for different courses.
+              > . In school I have had to use C, Java and Python for different
+              courses.
             </p>
           </div>
         </div>

@@ -35,29 +35,30 @@ import { ViewTransitions } from "astro:transitions";
       integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Jost"
+    />
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Kumbh+Sans"
+    />
     <ViewTransitions />
   </head>
   <body>
     <main>
-      <Header />
       <article class="mt-3 p-1">
         <h1 class="text-4xl text-gradient pb-3" transition:name={title}>{title}</h1>
         <p class="" transition:name={new Date(pubDate).toDateString()}>On {new Date(pubDate).toDateString()}</p>
         <hr class="border-gray-600 my-6" />
         <slot />
       </article>
-      <div class="flex py-10">
-        <a
-          href="/blog"
-          class="m-auto transition ease-in-out delay-75 duration-100 text-gray-600 hover:text-fuchsia-500 hover:scale-105 text-xl"
-          >Back</a
-        >
-      </div>
     </main>
   </body>
 </html>
 <style is:global>
   :root {
+    --black: #001921ff;
     --grey-0: hsl(209, 61%, 16%);
     --grey-1: hsl(211, 39%, 23%);
     --grey-2: hsl(209, 34%, 30%);
@@ -99,11 +100,13 @@ import { ViewTransitions } from "astro:transitions";
       var(--teal-0) 80%
     );
   }
+
   html {
-    font-family: "Roboto", system-ui, sans-serif;
-    background-color: var(--grey-0);
+    font-family: "Jost", system-ui, sans-serif;
+    background-color: var(--black);
     scroll-behavior: smooth;
   }
+
   code {
     font-family: "Roboto", system-ui, sans-serif;
     /* font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
@@ -119,8 +122,8 @@ import { ViewTransitions } from "astro:transitions";
   p {
     margin-top: 3vh;
     color: var(--grey-7);
-    font-family: "Quicksand", serif;
-    font-size: 1rem;
+    font-family: "Jost", serif;
+    font-size: 1.25rem;
     font-weight: thin;
   }
 
@@ -129,8 +132,14 @@ import { ViewTransitions } from "astro:transitions";
   }
 
   li {
-    margin-left: 1vh;
+    list-style: disc;
+    margin-left: 1.5vh;
+    margin-top: 1vh;
+    color: var(--grey-7);
+    font-family: "Jost", serif;
   }
+
+
 
   article > img {
     margin: auto;
@@ -140,22 +149,22 @@ import { ViewTransitions } from "astro:transitions";
   h1,
   h2,
   h3 {
-    margin-top: 2vh;
+    margin-top: 2vh !important;
     color: var(--grey-9);
-    font-family: "Quicksand", serif;
-    font-weight: bold;
+    font-family: "Kumbh Sans", sans-serif;
+    font-weight: bold !important;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.2rem !important;
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.75rem !important;
   }
 
   h3 {
-    font-size: 1.25rem;
+    font-size: 1.5rem !important;
   }
 
   pre {
@@ -174,6 +183,17 @@ import { ViewTransitions } from "astro:transitions";
     font-family: "Roboto", serif;
     font-style: bold;
     text-decoration: underline;
+  }
+
+  .epic-text {
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 1),
+    0px 0px 10px rgba(255, 255, 255, 1),
+    0px 0px 15px rgba(255, 255, 255, 1),
+    0px 0px 20px rgba(73, 255, 24, 1),
+    0px 0px 30px rgba(73, 255, 24, 1),
+    0px 0px 40px rgba(73, 255, 24, 1),
+    0px 0px 55px rgba(73, 255, 24, 1),
+    0px 0px 75px rgba(73, 255, 24, 1);
   }
 
   .text-gradient {

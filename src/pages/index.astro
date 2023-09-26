@@ -3,36 +3,84 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 ---
 
+<script>
+  var subtext = document.getElementById("subtext");
+  var final = "or just call me Alex.";
+  window.onload = () => {
+    if (!subtext) {
+      console.log();
+    }
+    setInterval(() => {
+      if (!subtext) return;
+      subtext.innerHTML = final.substring(0, subtext.innerHTML.length + 1);
+    }, 100);
+  };
+</script>
+
 <Layout title="Dirivial | Home">
   <main>
-    <div class="pt-8 flex flex-row items-center">
-      <div class="h-2 w-2/4 rounded-lg special-div"></div>
-      <h1 class="text-gradient p-2 -translate-y-1 text-5xl">Dirivial</h1>
-      <div class="h-2 w-full rounded-lg special-div"></div>
+    <div class="flex flex-col items-center h-screen justify-center">
+      <h1
+        class="text-white epic-text text-7xl font-extrabold align-middle tracking-wider underline underline-offset-8 decoration-2"
+      >
+        {" "}DIRIVIAL
+      </h1>
+      <p id="subtext" class="pt-2 font-medium text-xl"></p>
     </div>
 
     <div class="pt-4 flex flex-col items-center">
-      <p class="w-4/5">
-        Hello, my name is Alexander. I'm a CS student who likes to do some web
-        development on his free time. My interests outside of programming
-        include weightlifting, rock climbing and reading.
+      <p class="w-3/5 text-2xl text-center">
+        Hi there! I'm a programmer who likes to do some web & game development
+        in his free time.
       </p>
-      <p class="w-4/5 pt-4">
-        I'm currently closing in on my bachelor's degree in Computer Science, so
-        I might be busier than usual. Recently I created the blog page which I
-        hope to update somewhat regularly with things I've learned or found
-        interesting.
-      </p>
+
+      <div class="pt-16 grid grid-cols-3 gap-16 w-3/4">
+        <a
+        href="https://github.com/Dirivial"
+        class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">Github</a>
+        <a
+        href="https://twitter.com/Dirivial"
+        class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">Twitter</a>
+        
+        <a
+          href="https://www.youtube.com/channel/UC0Awfhr7Yl0tRYrVD2K6ZsQ"
+          class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">YouTube</a>
+      </div>
+      <div class="pt-8 grid grid-cols-2 gap-16 w-2/4">
+        <a
+          href="/blog"
+          class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">Blog</a>
+          <a
+          href="/faq"
+          class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">About</a>
+          
+</div>
+          <div class="pt-8 grid grid-cols-1 gap-16 w-1/4">
+            <a
+              href="mailto:alexander.kadeby@gmail.com"
+              class="text-2xl py-2 text-white border-2 rounded-md border-white text-center font-medium hover:text-slate-800 hover:bg-white delay-0 duration-300 transition-all">E-Mail</a>
     </div>
 
-    <div class="pt-24 flex flex-row items-center">
-      <div class="h-2 w-full rounded-lg special-div"></div>
-      <h1 class="text-gradient p-2 -translate-y-1 text-4xl">Projects</h1>
-      <div class="h-2 w-2/4 rounded-lg special-div"></div>
+    <div class="pt-64 flex flex-col items-center">
+      <h1
+        class="text-white epic-text text-4xl align-middle tracking-wider underline underline-offset-8 decoration-2"
+      >
+        PROJECTS
+      </h1>
     </div>
 
-    <div class="pt-6 flex flex-col items-center">
-      <div class="grid grid-cols-2 gap-3 w-4/5">
+    <div class="pt-16 flex flex-col items-center">
+      <div class="grid grid-cols-2 gap-8 w-4/5">
+        <Card
+          title="Habits"
+          body="A good 'ol habit tracker."
+          href="https://github.com/Dirivial/habits"
+        />
+        <Card
+          title="CastleMania"
+          body="A 3D game made in unity to learn wave function collapse."
+          href="https://github.com/Dirivial/CastleMania"
+        />
         <Card
           title="dirivial.dev"
           body="This website you're on right now!"
@@ -43,20 +91,10 @@ import Card from "../components/Card.astro";
           body="Small website for viewing a depth first search solving a maze"
           href="https://github.com/Dirivial/a-maze-d"
         />
-        <Card
-          title="Fit"
-          body="Website for remembering what you did last workout."
-          href="https://github.com/Dirivial/fit"
-        />
-        <Card
-          title="Issue Tracker"
-          body="Website tracking issues for a project. My first full-stack webdev project."
-          href="https://github.com/Dirivial/issue-tracker"
-        />
       </div>
     </div>
 
-    <div class="p-12"></div>
+    <div class="p-16"></div>
   </main>
 </Layout>
 

@@ -6,10 +6,16 @@ const allPosts = await Astro.glob("../pages/blog/*.mdx");
 
 <Layout title="Dirivial | Blog">
   <main>
-    <div class="pt-8 flex flex-row items-center">
-      <div class="h-2 w-1/6 rounded-lg special-div"></div>
-      <h1 class="text-gradient p-2 -translate-y-3 text-5xl">Blog</h1>
-      <div class="h-2 w-full rounded-lg special-div"></div>
+    <div class="pt-8 flex flex-row justify-around items-center">
+      <a href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-arrow-thin-left-circle fill-white w-10 hover:fill-slate-400 hover:-translate-x-1 transition-all"><path class="secondary" d="M9.41 11H17a1 1 0 0 1 0 2H9.41l2.3 2.3a1 1 0 1 1-1.42 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.42 1.4L9.4 11z"/></svg>
+      </a>
+      <h1
+        class="text-white epic-text text-4xl align-middle tracking-wider underline underline-offset-8 decoration-2"
+      >
+        BLOG
+      </h1>
+      <div/>
     </div>
 
     {
@@ -36,9 +42,21 @@ const allPosts = await Astro.glob("../pages/blog/*.mdx");
     background-position: 0%;
   }
   a {
-    color: var(--grey-7);
+    color: var(--grey-0);
     font-family: "Quicksand", serif;
     font-size: 1rem;
     font-weight: thin;
   }
+
+  .epic-text {
+        text-shadow:
+          0px 0px 5px rgba(255, 255, 255, 1),
+          0px 0px 10px rgba(255, 255, 255, 0.3),
+          0px 0px 15px rgba(255, 255, 255, 0.5),
+          0px 0px 20px var(--grey-0),
+          0px 0px 30px var(--grey-0),
+          0px 0px 40px var(--grey-0),
+          0px 0px 55px var(--grey-0),
+          0px 0px 75px var(--grey-0);
+      }
 </style>
