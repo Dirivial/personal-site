@@ -77,9 +77,9 @@ import Card from "../components/Card.astro";
 
         <div class="grid md:grid-cols-2 gird-cols-1 gap-8 w-3/5">
           <Card
-            title="Habits"
-            body="A good 'ol habit tracker."
-            href="https://github.com/Dirivial/habits"
+            title="Nutlang"
+            body="A nutty programming language."
+            href="https://github.com/Dirivial/Nutlang"
           />
           <Card
             title="CastleMania"
@@ -87,14 +87,14 @@ import Card from "../components/Card.astro";
             href="https://github.com/Dirivial/CastleMania"
           />
           <Card
-            title="dirivial.dev"
-            body="This website you're on right now!"
-            href="https://github.com/Dirivial/personal-site"
+            title="Music Quiz"
+            body="A music quiz app similar to kahoot."
+            href="https://github.com/Dirivial/mq"
           />
           <Card
-            title="A-maze-d"
-            body="Small website for viewing a depth first search solving a maze"
-            href="https://github.com/Dirivial/a-maze-d"
+            title="SmolChat"
+            body="A small chat application in the terminal using sockets & ncurses."
+            href="https://github.com/Dirivial/SmolChat"
           />
         </div>
       </div>
@@ -114,18 +114,18 @@ import Card from "../components/Card.astro";
 </Layout>
 
 <script is:inline>
-var final = "or just call me Alex.";
+  var final = "or just call me Alex.";
 
-var id = setInterval(animateSubtext, 100);
+  var id = setInterval(animateSubtext, 100);
 
-function animateSubtext() {
-  var subtext = document.getElementById("subtext");
-  if (subtext && subtext.innerHTML.length < final.length) {
-    subtext.innerHTML = final.substring(0, subtext.innerHTML.length + 1);
-  } else {
-    clearInterval(id);
+  function animateSubtext() {
+    var subtext = document.getElementById("subtext");
+    if (subtext && subtext.innerHTML.length < final.length) {
+      subtext.innerHTML = final.substring(0, subtext.innerHTML.length + 1);
+    } else {
+      clearInterval(id);
+    }
   }
-}
 </script>
 
 <style>
